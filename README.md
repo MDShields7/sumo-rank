@@ -1,5 +1,5 @@
 # Documentation - How to use sumoRank
-"<YOUR RANK INPUT>".sumoRank("<YOUR FORMAT INPUT>")
+"\<YOUR RANK INPUT>".sumoRank("\<YOUR FORMAT INPUT>")
 
 ## RANK INPUT
 Named ranks     -->   Yokozuna, Ozeki, Sekiwake, Komisubi, Maegashira<br/>
