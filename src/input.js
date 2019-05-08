@@ -1,4 +1,6 @@
 let input = function (type, item) {
+  let params = [type, item];
+  console.log('params:', params)
   if (type.toLowerCase() === "rank") {
     type = "Rank"
   } else if (type.toLowerCase() === "format") {
@@ -16,8 +18,10 @@ let input = function (type, item) {
   } else if (item.trim().length !== item.length && item.trim().length === 0) {
     throw `SR.${num}03 ${type} Error - Blank ${type} string`
   }
+
+  // console.log('params:', params)
   formatTypes = ["Nn", "nn", "N", "n", "Dd", "dd", "D", "d", "#", " "];
-  rankTypes = ["Yokozuna", "yokozuna", "Y", "y", "Ozeki", "ozeki", "O", "o", "Sekiwake", "sekiwake", "S", "s", "Komisubi", "komisubi", "K", "k", "Maegashira", "maegashira", "M", "m", /[0-9]/, " "];
+  rankTypes = ["Yokozuna", "yokozuna", "Y", "y", "Ozeki", "ozeki", "O", "o", "Sekiwake", "sekiwake", "S", "s", "Komisubi", "komisubi", "K", "k", "Maegashira", "maegashira", "M", "m", /[0-9]{2}/, /[0-9]{1}/, " ", "East", "east", "E", "e", "West", "west", "W", "w"];
   var typeArr;
   var typeArrOrig;
   if (type === "Rank") {
@@ -28,25 +32,36 @@ let input = function (type, item) {
     typeArrOrig = formatTypes;
     // item = item.toLowerCase();
   }
+  // console.log('typeArr[0]', typeArr[0])
   let multiples = [false];
   var newArr = [];
+  // console.log('params:', params, 'newArr', newArr)
   for (let j = 0; j < item.length; j++) {
     for (let i = 0; i < typeArr.length; i++) {
-      let slice = item.slice(j, j + (typeArr[i].length));
-      console.log('i:', i, 'j:', j, 'type:', '"' + typeArr[i] + '"', 'slice:', '"' + slice + '"', 'item:', '"' + item + '"')
+      let regex = typeof typeArr[i] === "object";
+      let regexLength = i === 20 ? 2 : 1
+      let sliceEnd = regex ? j + regexLength : j + typeArr[i].length;
+      console.log('regex', regex, 'regexLength', regexLength, 'typeArr[i]', typeArr[i], 'typeof typeArr[i]', typeof typeArr[i])
+      let slice = item.slice(j, sliceEnd);
+      console.log('slice', slice, 'slice.match(typeArr[i])', slice.match(typeArr[i]))
+      // console.log('typeArr', typeArr)
+      // console.log('typeArr[i]', typeArr[i])
+      console.log('i:', i, 'j:', j, 'type:', '"' + typeArr[i] + '"', 'slice:', '"' + slice + '"', 'sliceEnd:', sliceEnd, 'item:', '"' + item + '"')
       if (typeof typeArr[i] === "string" && typeArr[i] === slice) {
         console.log('matched', typeArr[i], "&", slice)
         newArr.push(typeArr[i])
         item = spliceString(item, j, typeArr[i].length)
-        j--
-      } else if (typeof typeArr[i] === "object" && typeArr[i].match(slice)) {
+        // j--
+      } else if (typeof typeArr[i] === "object" && slice.match(typeArr[i])) {
         console.log('matched', typeArr[i], "&", slice)
-        newArr.push(typeArr[i])
-        item = spliceString(item, j, typeArr[i].length)
-        j--
+        newArr.push(slice)
+        item = spliceString(item, j, sliceEnd)
+        // j--
       }
     }
   }
+
+  console.log('params:', params, 'newArr', newArr, 'item', item)
   let testFor = (function () {
     let newTypes;
     let formatTypesArr = [
@@ -100,6 +115,7 @@ let input = function (type, item) {
             }
           }
         }
+        // console.log("testFor.multiples, returning false");
         return false;
       }
     }
@@ -109,6 +125,7 @@ let input = function (type, item) {
       multiples = [true, elem];
     }
   })
+  // console.log('params:', params, 'newArr', newArr, 'item', item)
   if (item.length !== 0) {
     throw `SR.${num}04 ${type} Error - Rejected characters ${multiples[1]}`
   } else if (multiples[0] !== false) {
@@ -124,3 +141,5 @@ let input = function (type, item) {
 }
 
 module.exports = input;
+
+console.log('input("rank", "Y2E")', input("rank", "Y2E"))

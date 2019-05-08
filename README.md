@@ -22,7 +22,7 @@ nn # dd         -->   yokozuna 1 east, maegashira 12 west, etc.<br/>
 N#D             -->   Y1E, M12W, etc.<br/>
 N#d             -->   Y1e, M12w, etc.<br/>
 N               -->   Y, M, etc.<br/>
-#d              -->   1e, 12w, etc.
+\#d              -->   1e, 12w, etc.
 
 ## USE GUIDE
 
