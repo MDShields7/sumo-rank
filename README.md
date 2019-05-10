@@ -1,7 +1,16 @@
 # Documentation - How to use sumoRank
 "\<YOUR RANK INPUT>".sumoRank("\<YOUR FORMAT INPUT>")
 
-## RANK INPUT
+## QUICK BRIEF ON SUMO RANKS
+**Each rank has a name, number and direction** - typically in that order.
+Example 1: The highest rank in sumo
+Long, all caps version: "Yokozuna 1 East"
+Short, partial caps version: "Y1e"
+Example 2: The lowest possible rank in the top division
+Long, all caps version: "Maegashira 17 West"
+Short, partial caps version: "M17w"
+
+## RANK INPUT ( Only handles top division ranks currently )
 Named ranks     -->   Yokozuna, Ozeki, Sekiwake, Komisubi, Maegashira<br/>
 Number ranks    -->   1-17 (only top division)<br/>
 Direction ranks -->   East, West
@@ -41,7 +50,7 @@ N               -->   Y, M, etc.<br/>
     "e 1 Komisubi".sumoRank("N#D")       --> "K1E"<br/>
     "K1e".sumoRank("N#D")                --> "K1E"<br/>
 2.  Input rank IS caps sensitive<br/>
-    "KomiSUBi 1 eASt".sumoRank("Nn")     --> "Komisubi"
+    "KomiSUBi 1 eASt".sumoRank("Nn")     --> Error SR.304 
 
 ### CONTENT ERRORS
 +   `SR.101`  Non-existent Name/Number rankings throw error<br/>
@@ -67,7 +76,7 @@ N               -->   Y, M, etc.<br/>
 +   `SR.306`  Rank Name not given, but requested<br/>
     "2 West".sumoRank("Nn")             --> Error<br/>
 +   `SR.307`  Rank Number not given, but requested<br/>
-    "Ozeki West".sumoRank("#")            --> Error<br/>
+    "Ozeki West".sumoRank("#")           --> Error<br/>
 +   `SR.308`  Rank Direction not given, but requested<br/>
     "Ozeki 2".sumoRank("Dd")            --> Error<br/>
 
