@@ -64,7 +64,7 @@ String.prototype.sumoRank = function (formatStr) {
         }
       }
     }
-    for (let j = rankNumberTypes.length; j >= 0; j--) {
+    for (let j = rankNumberTypes.length - 1; j >= 0; j--) {
       let rankObj = rankStr.match(rankNumberTypes[j]);
       let rankIndex = -1;
       if (rankObj !== null) {
@@ -73,6 +73,7 @@ String.prototype.sumoRank = function (formatStr) {
       if (rankIndex !== -1) {
         let slice = spliceStr(rankStr, rankIndex, rankIndex + j)[0];
         rank.number = numbers[slice];
+        break;
       }
     }
   }
@@ -81,6 +82,8 @@ String.prototype.sumoRank = function (formatStr) {
     for (let k = 0; k < formatStrCopy.length; k++) {
       for (let l = 0; l < formatTypes.length; l++) {
         let fItem = formatTypes[l];
+        // let fLength = formatTypes[l] === "#" ? l : fItem.length
+        // let sliceEnd = k + fLength;
         let sliceEnd = k + fItem.length;
         let slice = formatStrCopy.slice(k, sliceEnd);
         if (fItem === slice) {
@@ -96,7 +99,7 @@ String.prototype.sumoRank = function (formatStr) {
           } else {
             rKey = "number"
             formatStrCopy = formatStrCopy.replace(fItem, rank[rKey])
-            k += rank[rKey].toString().length;
+            k += rank[rKey].toString().length - 1;
           }
         }
       }
@@ -166,4 +169,5 @@ String.prototype.sumoRank = function (formatStr) {
 
 // let test1 = "yokozuna 1 east".sumoRank("Nn # Dd")
 // let test2 = "O2e".sumoRank("Nn # Dd")
-let test3 = "Maegashira 12 West".sumoRank("#Dd")
+// let test3 = "Maegashira 12 West".sumoRank("#Dd")
+let test3 = "Maegashira 17 east".sumoRank("Nn # Dd")
