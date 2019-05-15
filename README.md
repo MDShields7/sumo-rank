@@ -1,19 +1,20 @@
 # Documentation - How to use sumoRank
-"\<YOUR RANK INPUT>".sumoRank("\<YOUR FORMAT INPUT>")
+"\<RANK>".sumoRank("\<DESIRED FORMAT>")
 
 ## QUICK BRIEF ON SUMO RANKS
-**Each rank has a name, number and direction** - typically in that order.
-Example 1: The highest rank in sumo
-Long, all caps version: "Yokozuna 1 East"
-Short, partial caps version: "Y1e"
-Example 2: The lowest possible rank in the top division
-Long, all caps version: "Maegashira 17 West"
+**Each rank has a name, number and direction** - typically in that order.<br/>
+Example 1: The highest rank in sumo<br/>
+Long, all caps version: "Yokozuna 1 East"<br/>
+Short, partial caps version: "Y1e"<br/>
+Example 2: The lowest possible rank in the top division<br/>
+Long, all caps version: "Maegashira 17 West"<br/>
 Short, partial caps version: "M17w"
 
 ## RANK INPUT ( Only handles top division ranks currently )
-Named ranks     -->   Yokozuna, Ozeki, Sekiwake, Komisubi, Maegashira<br/>
-Number ranks    -->   1-17 (only top division)<br/>
-Direction ranks -->   East, West
+
+Named ranks (high to low)    -->   Yokozuna, Ozeki, Sekiwake, Komisubi, Maegashira<br/>
+Number ranks (high to low)   -->   1-17 (only top division)<br/>
+Direction ranks (high to low) -->   East, West
 ## FORMAT INPUT
 Nn              -->   Yokozuna, Maegashira, etc.<br/>
 nn              -->   yokozuna, maegashira, etc.<br/>
@@ -41,8 +42,6 @@ N               -->   Y, M, etc.<br/>
     "S1W".sumoRank("N#d")                --> "S1w"<br/>
 2.  Spaces between rankings will be retained<br/>
     "S1W".sumoRank("nn # dd")            --> "sekiwake 1 west"<br/>
-3.  Extra spaces will be removed from final result<br/>
-    "S1W".sumoRank("#   Dd")             --> "1 West"
 
 ### RANK INPUTS
 1.  Input rank can be any arrangement<br/>
@@ -55,7 +54,7 @@ N               -->   Y, M, etc.<br/>
 ### CONTENT ERRORS
 +   `SR.101`  Non-existent Name/Number rankings throw error<br/>
     "Maegashira 18 East".sumoRank("N#D") --> Error<br/>
-+   `SR.202`  Lower division rankings throw error<br/>
++   `SR.202`  (INCOMPLETE) Lower division rankings throw error<br/>
     "Sandanme 82 East".sumoRank("N#D")   --> Error
 
 ### INPUT ERRORS FOR RANK
@@ -63,7 +62,7 @@ N               -->   Y, M, etc.<br/>
     "".sumoRank("Dd")                    --> Error<br/>
 +   `SR.302`  Blank rank types throw error<br/>
     "     ".sumoRank("Nn#Dd")            --> Error<br/>
-+   `SR.303`  (INCORRECT RANK TYPES NOT ALLOWED - ERROR DOES NOT EXIST)<br/>
++   `SR.303`  (ERROR DOES NOT EXIST)<br/>
 +   `SR.304`  Non-rank item throw error<br/>
     "M two east".sumoRank("N#D")         --> Error<br/>
     "i like turtles".sumoRank("N#D")     --> Error<br/>

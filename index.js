@@ -16,7 +16,7 @@ String.prototype.sumoRank = function (formatStr) {
     }
   }
   function populateNumbers() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {
       numbers[i] = i;
     }
   }
@@ -60,6 +60,21 @@ String.prototype.sumoRank = function (formatStr) {
           rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
         } else if (type === "Maegashira" || type === "maegashira" || type === "M" || type === "m") {
           rankAssignTypes("name", maegashira);
+          rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+        } else if (type === "Juryo" || type === "juryo" || type === "J" || type === "j") {
+          rankAssignTypes("name", juryo);
+          rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+        } else if (type === "Makushita" || type === "makushita" || type === "Ms" || type === "ms") {
+          rankAssignTypes("name", makushita);
+          rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+        } else if (type === "Sandanme" || type === "Sandanme" || type === "Sd" || type === "sd") {
+          rankAssignTypes("name", sandanme);
+          rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+        } else if (type === "Jonidan" || type === "jonidan" || type === "Jd" || type === "jd") {
+          rankAssignTypes("name", jonidan);
+          rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+        } else if (type === "Jonokuchi" || type === "jonokuchi" || type === "Jk" || type === "jk") {
+          rankAssignTypes("name", jonokuchi);
           rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
         } else if (type === "East" || type === "east" || type === "E" || type === "e") {
           rankAssignTypes("direction", east);
@@ -126,7 +141,10 @@ String.prototype.sumoRank = function (formatStr) {
   function testNumberLimits() {
     // Makes sure all rank/number combos are valid
     // example: Maegashira cannot go over 17
-    if ((rank.name === maegashira && rank.number > 17)) {
+    if ((rank.name === maegashira && rank.number > 17
+      || rank.name === juryo && rank.number > 14
+      || rank.name === makushita && rank.number > 60
+      || rank.name === sandanme && rank.number > 100)) {
       try {
         throw `SR.101 Non-existent Rank Name/Number Error - ${rank.name.Nn} Rank can not have a number of ${rank.number}`
       }
@@ -171,6 +189,36 @@ String.prototype.sumoRank = function (formatStr) {
     N: "M",
     n: "m"
   }
+  const juryo = {
+    Nn: "Juryo",
+    nn: "juryo",
+    N: "J",
+    n: "j"
+  }
+  const makushita = {
+    Nn: "Makushita",
+    nn: "makushita",
+    N: "Ms",
+    n: "ms"
+  }
+  const sandanme = {
+    Nn: "Sandanme",
+    nn: "sandanme",
+    N: "Sd",
+    n: "sd"
+  }
+  const jonidan = {
+    Nn: "Jonidan",
+    nn: "jonidan",
+    N: "Jd",
+    n: "jd"
+  }
+  const jonokuchi = {
+    Nn: "Jonokuchi",
+    nn: "jonokuchi",
+    N: "Jk",
+    n: "jk"
+  }
   const east = {
     Dd: "East",
     dd: "east",
@@ -184,8 +232,10 @@ String.prototype.sumoRank = function (formatStr) {
     d: "w"
   }
   let numbers = {};
-  const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komisubi", "komisubi", "Maegashira", "maegashira", "East", "east", "West", "west", "Y", "y", "O", "o", "S", "s", "K", "k", "M", "m", "E", "e", "W", "w"];
-  const rankNumberTypes = [null, /[0-9]{1}/, /[0-9]{2}/]
+  const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komisubi", "komisubi", "Maegashira", "maegashira", "Juryo", "juryo", "Makushita", "makushita", "Sandanme", "sandanme", "Jonidan", "jonidan", "Jonokuchi", "jonokuchi",
+
+    "East", "east", "West", "west", "Ms", "ms", "Sd", "sd", "Jd", "jd", "Jk", "jk", "Y", "y", "O", "o", "S", "s", "K", "k", "M", "m", "J", "j", "E", "e", "W", "w"];
+  const rankNumberTypes = [null, /[0-9]{1}/, /[0-9]{2}/, /[0-9]{3}/]
   formatTypes = ["Nn", "nn", "N", "n", "Dd", "dd", "D", "d", "#"];
   //
   errorTest();
@@ -208,4 +258,7 @@ String.prototype.sumoRank = function (formatStr) {
 // let test4 = "Maegashira 17 east".sumoRank("Nn # Dd")
 
 // let test5 = "17 east".sumoRank("")
-let test6 = "Maegashira 17 eo east".sumoRank("Nn # Dd")
+// let test6 = "Maegashira 17 east".sumoRank("N#D")
+// let test7 = "Jonidan 100 east".sumoRank("Nn#Dd")
+// let test8 = "jonokuchi 25W".sumoRank("n#d")
+let test9 = "Ms25W".sumoRank("Nn, #d")
