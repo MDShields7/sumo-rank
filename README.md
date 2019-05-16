@@ -1,17 +1,17 @@
-Contents
-[Quick Brief on Sumo Ranks](#quick-brief-on-sumo-ranks)
-[Rank Input](#rank-input)
-[Format Input](#format-input)
-[Common Examples](#common-examples)
-[Use Guide](#use-guide)
-[Format Input Rules](#format-input-rules)
-[Rank Input Rules](#rank-input-rules)
-[Content Errors](#content-errors)
-[Input Errors for Rank](#input-errors-for-rank)
-[Input Errors for Format](#input-errors-for-Format)
-
 # Documentation - How to use sumoRank
 "\<RANK>".sumoRank("\<DESIRED FORMAT>")
+
+##Contents
+[Quick Brief on Sumo Ranks](#quick-brief-on-sumo-ranks)<br/>
+[Rank Input](#rank-input)<br/>
+[Format Input](#format-input)<br/>
+[Common Usage Examples](#common-usage-examples)<br/>
+[Use Guide](#use-guide)<br/>
+[Format Input Rules](#format-input-rules)<br/>
+[Rank Input Rules](#rank-input-rules)<br/>
+[Content Errors](#content-errors)<br/>
+[Input Errors for Rank](#input-errors-for-rank)<br/>
+[Input Errors for Format](#input-errors-for-Format)<br/>
 
 ## QUICK BRIEF ON SUMO RANKS
 **Each rank has a name, number and direction** - typically in that order.<br/>
@@ -38,7 +38,7 @@ D               -->   E, W<br/>
 d               -->   e, w<br/>
 \#               -->   1, 15, 68, 104, etc.
 
-### COMMON EXAMPLES 
+### COMMON USAGE EXAMPLES 
 Nn # Dd         -->   Yokozuna 1 East, Maegashira 12 West, Jonokuchi 68 East, etc.<br/>
 nn # dd         -->   yokozuna 1 east, maegashira 12 west, jonokuchi 68 east, etc.<br/>
 N#D             -->   Y1E, M12W, Jk68E, etc.<br/>
