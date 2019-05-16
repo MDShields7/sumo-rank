@@ -55,8 +55,8 @@ String.prototype.sumoRank = function (formatStr) {
         } else if (type === "Sekiwake" || type === "Sekiwake" || type === "S" || type === "s") {
           rankAssignTypes("name", sekiwake);
           rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-        } else if (type === "Komisubi" || type === "komisubi" || type === "K" || type === "k") {
-          rankAssignTypes("name", komisubi);
+        } else if (type === "Komusubi" || type === "komusubi" || type === "K" || type === "k") {
+          rankAssignTypes("name", komusubi);
           rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
         } else if (type === "Maegashira" || type === "maegashira" || type === "M" || type === "m") {
           rankAssignTypes("name", maegashira);
@@ -177,9 +177,9 @@ String.prototype.sumoRank = function (formatStr) {
     N: "S",
     n: "s"
   }
-  const komisubi = {
-    Nn: "Komisubi",
-    nn: "komisubi",
+  const komusubi = {
+    Nn: "Komusubi",
+    nn: "komusubi",
     N: "K",
     n: "k"
   }
@@ -232,7 +232,7 @@ String.prototype.sumoRank = function (formatStr) {
     d: "w"
   }
   let numbers = {};
-  const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komisubi", "komisubi", "Maegashira", "maegashira", "Juryo", "juryo", "Makushita", "makushita", "Sandanme", "sandanme", "Jonidan", "jonidan", "Jonokuchi", "jonokuchi",
+  const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komusubi", "komusubi", "Maegashira", "maegashira", "Juryo", "juryo", "Makushita", "makushita", "Sandanme", "sandanme", "Jonidan", "jonidan", "Jonokuchi", "jonokuchi",
 
     "East", "east", "West", "west", "Ms", "ms", "Sd", "sd", "Jd", "jd", "Jk", "jk", "Y", "y", "O", "o", "S", "s", "K", "k", "M", "m", "J", "j", "E", "e", "W", "w"];
   const rankNumberTypes = [null, /[0-9]{1}/, /[0-9]{2}/, /[0-9]{3}/]

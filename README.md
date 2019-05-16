@@ -1,3 +1,15 @@
+Contents
+[Quick Brief on Sumo Ranks](#quick-brief-on-sumo-ranks)
+[Rank Input](#rank-input)
+[Format Input](#format-input)
+[Common Examples](#common-examples)
+[Use Guide](#use-guide)
+[Format Input Rules](#format-input-rules)
+[Rank Input Rules](#rank-input-rules)
+[Content Errors](#content-errors)
+[Input Errors for Rank](#input-errors-for-rank)
+[Input Errors for Format](#input-errors-for-Format)
+
 # Documentation - How to use sumoRank
 "\<RANK>".sumoRank("\<DESIRED FORMAT>")
 
@@ -12,44 +24,46 @@ Short, partial caps version: "M17w"
 
 ## RANK INPUT ( Only handles top division ranks currently )
 
-Named ranks (high to low)    -->   Yokozuna, Ozeki, Sekiwake, Komisubi, Maegashira<br/>
-Number ranks (high to low)   -->   1-17 (only top division)<br/>
+Named ranks (high to low)    -->   Yokozuna, Ozeki, Sekiwake, Komusubi, Maegashira, Juryo, Makushita, Sandanme, Jonidan, Jonokuchi<br/>
+Number ranks (high to low)   -->   1 - 100+ (100 is a typical maximum, but it is unlimited in some cases)<br/>
 Direction ranks (high to low) -->   East, West
 ## FORMAT INPUT
-Nn              -->   Yokozuna, Maegashira, etc.<br/>
-nn              -->   yokozuna, maegashira, etc.<br/>
-N               -->   Y, M, etc.<br/>
-n               -->   y, m, etc.<br/>
+Nn              -->   Yokozuna, Maegashira, Jonokuchi, etc.<br/>
+nn              -->   yokozuna, maegashira, Jonokuchi, etc.<br/>
+N               -->   Y, M, Jk, etc.<br/>
+n               -->   y, m, jk, etc.<br/>
 Dd              -->   East, West<br/>
 dd              -->   east, west<br/>
 D               -->   E, W<br/>
 d               -->   e, w<br/>
-\#               -->   1, 12, etc.
+\#               -->   1, 15, 68, 104, etc.
 
 ### COMMON EXAMPLES 
-Nn # Dd         -->   Yokozuna 1 East, Maegashira 12 West, etc.<br/>
-nn # dd         -->   yokozuna 1 east, maegashira 12 west, etc.<br/>
-N#D             -->   Y1E, M12W, etc.<br/>
-N#d             -->   Y1e, M12w, etc.<br/>
-N               -->   Y, M, etc.<br/>
-\#d              -->   1e, 12w, etc.
+Nn # Dd         -->   Yokozuna 1 East, Maegashira 12 West, Jonokuchi 68 East, etc.<br/>
+nn # dd         -->   yokozuna 1 east, maegashira 12 west, jonokuchi 68 east, etc.<br/>
+N#D             -->   Y1E, M12W, Jk68E, etc.<br/>
+N#d             -->   Y1e, M12w, Jk68e, etc.<br/>
+N               -->   Y, M, Jk, etc.<br/>
+\#d              -->   1e, 12w, 68e, etc.
 
 ## USE GUIDE
 
-### FORMAT INPUTS
+### FORMAT INPUT RULES
+"\<RANK>".sumoRank("**\<DESIRED FORMAT>**")
 1.  Format can be arranged in any combination<br/>
     "S1W".sumoRank("Nn")                 --> "Sekiwake"<br/>
     "S1W".sumoRank("N#d")                --> "S1w"<br/>
 2.  Spaces between rankings will be retained<br/>
     "S1W".sumoRank("nn # dd")            --> "sekiwake 1 west"<br/>
 
-### RANK INPUTS
+### RANK INPUT RULES
+"**\<RANK>**".sumoRank("\<DESIRED FORMAT>")
 1.  Input rank can be any arrangement<br/>
-    "Komisubi 1 e".sumoRank("N#D")       --> "K1E"<br/>
-    "e 1 Komisubi".sumoRank("N#D")       --> "K1E"<br/>
+    "Komusubi 1 e".sumoRank("N#D")       --> "K1E"<br/>
+    "e 1 Komusubi".sumoRank("N#D")       --> "K1E"<br/>
     "K1e".sumoRank("N#D")                --> "K1E"<br/>
 2.  Input rank IS caps sensitive<br/>
-    "KomiSUBi 1 eASt".sumoRank("Nn")     --> Error SR.304 
+    "KomuSUBi 1 eASt".sumoRank("Nn")     --> Error SR.304 
 
 ### CONTENT ERRORS
 +   `SR.101`  Non-existent Name/Number rankings throw error<br/>
