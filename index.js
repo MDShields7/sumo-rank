@@ -4,12 +4,10 @@ const inputFormat = require('./src/input.format');
 String.prototype.sumoRank = function (formatStr) {
   let rankStr = this.toString();
   let errorResult;
-  // console.log('rankStr:', "'" + rankStr + "'", 'formatStr:', "'" + formatStr + "'")
-  // METHODS
   function errorTest() {
     try {
-      let rankError = inputRank(rankStr)
-      let formatError = inputFormat(formatStr)
+      inputRank(rankStr)
+      inputFormat(formatStr)
     }
     catch (error) {
       errorResult = error;
@@ -33,7 +31,7 @@ String.prototype.sumoRank = function (formatStr) {
     }
   }
   function spliceStr(str, start, end) {
-    // takes out rank instances from rank string on which this method was called
+    // Takes out rank instances from rank string on which this method was called
     let slice1 = str.slice(0, start);
     let slice2 = str.slice(end);
     let sliceReturn = str.slice(start, end)
@@ -232,21 +230,16 @@ String.prototype.sumoRank = function (formatStr) {
     d: "w"
   }
   let numbers = {};
-  const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komusubi", "komusubi", "Maegashira", "maegashira", "Juryo", "juryo", "Makushita", "makushita", "Sandanme", "sandanme", "Jonidan", "jonidan", "Jonokuchi", "jonokuchi",
-
-    "East", "east", "West", "west", "Ms", "ms", "Sd", "sd", "Jd", "jd", "Jk", "jk", "Y", "y", "O", "o", "S", "s", "K", "k", "M", "m", "J", "j", "E", "e", "W", "w"];
+  const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komusubi", "komusubi", "Maegashira", "maegashira", "Juryo", "juryo", "Makushita", "makushita", "Sandanme", "sandanme", "Jonidan", "jonidan", "Jonokuchi", "jonokuchi", "East", "east", "West", "west", "Ms", "ms", "Sd", "sd", "Jd", "jd", "Jk", "jk", "Y", "y", "O", "o", "S", "s", "K", "k", "M", "m", "J", "j", "E", "e", "W", "w"];
   const rankNumberTypes = [null, /[0-9]{1}/, /[0-9]{2}/, /[0-9]{3}/]
   formatTypes = ["Nn", "nn", "N", "n", "Dd", "dd", "D", "d", "#"];
-  //
   errorTest();
   findRanks();
   replaceRanks();
   testNumberLimits();
   if (errorResult) {
-    // console.log('errorResult', "'" + errorResult + "'");
     return errorResult
   } else {
-    // console.log('returning', "'" + formatStrCopy + "'");
     return formatStrCopy;
   }
 }

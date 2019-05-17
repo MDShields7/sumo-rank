@@ -2,7 +2,7 @@
 "\<RANK>".sumoRank("\<DESIRED FORMAT>")
 
 ## Contents 
-<br/>
+
 [Quick Brief on Sumo Ranks](#quick-brief-on-sumo-ranks)<br/>
 [Rank Input](#rank-input)<br/>
 [Format Input](#format-input)<br/>
