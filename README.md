@@ -1,7 +1,8 @@
 # Documentation - How to use sumoRank
 "\<RANK>".sumoRank("\<DESIRED FORMAT>")
 
-##Contents
+## Contents 
+<br/>
 [Quick Brief on Sumo Ranks](#quick-brief-on-sumo-ranks)<br/>
 [Rank Input](#rank-input)<br/>
 [Format Input](#format-input)<br/>
@@ -22,7 +23,7 @@ Example 2: The lowest possible rank in the top division<br/>
 Long, all caps version: "Maegashira 17 West"<br/>
 Short, partial caps version: "M17w"
 
-## RANK INPUT ( Only handles top division ranks currently )
+## RANK INPUT
 
 Named ranks (high to low)    -->   Yokozuna, Ozeki, Sekiwake, Komusubi, Maegashira, Juryo, Makushita, Sandanme, Jonidan, Jonokuchi<br/>
 Number ranks (high to low)   -->   1 - 100+ (100 is a typical maximum, but it is unlimited in some cases)<br/>

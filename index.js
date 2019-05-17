@@ -4,7 +4,7 @@ const inputFormat = require('./src/input.format');
 String.prototype.sumoRank = function (formatStr) {
   let rankStr = this.toString();
   let errorResult;
-  console.log('rankStr:', "'" + rankStr + "'", 'formatStr:', "'" + formatStr + "'")
+  // console.log('rankStr:', "'" + rankStr + "'", 'formatStr:', "'" + formatStr + "'")
   // METHODS
   function errorTest() {
     try {
@@ -243,22 +243,12 @@ String.prototype.sumoRank = function (formatStr) {
   replaceRanks();
   testNumberLimits();
   if (errorResult) {
-    console.log('errorResult', "'" + errorResult + "'");
+    // console.log('errorResult', "'" + errorResult + "'");
     return errorResult
   } else {
-    console.log('returning', "'" + formatStrCopy + "'");
+    // console.log('returning', "'" + formatStrCopy + "'");
     return formatStrCopy;
   }
 }
 
-// let test1 = 123.sumoRank("Nn # Dd")
-// let test1 = "yokozuna 1 east".sumoRank("Nn # Dd")
-// let test2 = "O2e".sumoRank("Nn # Dd")
-// let test3 = "Maegashira 12 West".sumoRank("#Dd")
-// let test4 = "Maegashira 17 east".sumoRank("Nn # Dd")
-
-// let test5 = "17 east".sumoRank("")
-// let test6 = "Maegashira 17 east".sumoRank("N#D")
-// let test7 = "Jonidan 100 east".sumoRank("Nn#Dd")
-// let test8 = "jonokuchi 25W".sumoRank("n#d")
-let test9 = "Ms25W".sumoRank("Nn, #d")
+module.exports = String.prototype.sumoRank;

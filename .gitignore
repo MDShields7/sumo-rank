@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+jest.config.js
 
 # production
 /build
@@ -13,3 +14,4 @@
 .DS_Store
 .env
 .vscode
+.npmignore
