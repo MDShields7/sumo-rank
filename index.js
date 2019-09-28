@@ -13,6 +13,22 @@ String.prototype.sumoRank = function (formatStr) {
       errorResult = error;
     }
   }
+  function inputRank(rankStr) {
+    if (rankStr.length === 0) {
+      throw `SR.301 Rank Error - Empty Rank string`
+    } else if (rankStr.trim().length !== rankStr.length && rankStr.trim().length === 0) {
+      throw `SR.302 Rank Error - Blank Rank string`
+    }
+  }
+  function inputFormat(formatStr) {
+    if (typeof formatStr !== "string") {
+      throw `SR.403 Format Error - Incorrect Format type, not a string`
+    } else if (formatStr.length === 0) {
+      throw `SR.401 Format Error - Empty Format string`
+    } else if (formatStr.trim().length !== formatStr.length && formatStr.trim().length === 0) {
+      throw `SR.402 Format Error - Blank Format string`
+    }
+  }
   function populateNumbers() {
     for (let i = 0; i < 200; i++) {
       numbers[i] = i;
