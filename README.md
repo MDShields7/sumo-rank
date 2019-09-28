@@ -3,16 +3,16 @@
 
 ## Contents 
 
-[Quick Brief on Sumo Ranks](#quick-brief-on-sumo-ranks)<br/>
-[Rank Input](#rank-input)<br/>
-[Format Input](#format-input)<br/>
-[Common Usage Examples](#common-usage-examples)<br/>
-[Use Guide](#use-guide)<br/>
-[Format Input Rules](#format-input-rules)<br/>
-[Rank Input Rules](#rank-input-rules)<br/>
-[Content Errors](#content-errors)<br/>
-[Input Errors for Rank](#input-errors-for-rank)<br/>
-[Input Errors for Format](#input-errors-for-Format)<br/>
+[Quick Brief on Sumo Ranks](#user-content-quick-brief-on-sumo-ranks)<br/>
+[Rank Input](#user-content-rank-input)<br/>
+[Format Input](#user-content-format-input)<br/>
+[Common Usage Examples](#user-content-common-usage-examples)<br/>
+[Use Guide](#user-content-use-guide)<br/>
+[Format Input Rules](#user-content-format-input-rules)<br/>
+[Rank Input Rules](#user-content-rank-input-rules)<br/>
+[Content Errors](#user-content-content-errors)<br/>
+[Input Errors for Rank](#user-content-input-errors-for-rank)<br/>
+[Input Errors for Format](#user-content-input-errors-for-Format)<br/>
 
 ## QUICK BRIEF ON SUMO RANKS
 **Each rank has a name, number and direction** - typically in that order.<br/>

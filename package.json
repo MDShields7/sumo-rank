@@ -1,6 +1,6 @@
 {
   "name": "sumo-rank",
-  "version": "1.0.2",
+  "version": "1.0.21",
   "description": "String method that re-formats Japanese sumo wrestler ranks",
   "main": "index.js",
   "scripts": {
