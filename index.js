@@ -1,8 +1,8 @@
 ; (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['b'], factory);
+    define(factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory('b');
+    module.exports = factory();
   } else {
     root.sumoRank = factory(root.b);
   }
@@ -125,6 +125,8 @@
         throw `SR.401 Format Error - Empty Format string`
       } else if (formatStr.trim().length !== formatStr.length && formatStr.trim().length === 0) {
         throw `SR.402 Format Error - Blank Format string`
+      } else {
+        formatStrCopy = formatStr.slice();
       }
     }
     function populateNumbers() {
@@ -214,7 +216,6 @@
         throw `SR.304 Non-rank items Error - '${rankStr}' found in string`
       }
     }
-    formatStrCopy = formatStr.slice();
     function replaceRanks() {
       // Loops thru format string an replaces format with desired format/rank type
       for (let k = 0; k < formatStrCopy.length; k++) {
