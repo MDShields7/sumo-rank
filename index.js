@@ -1,10 +1,10 @@
 ; (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(factory);
+    define(['b'], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory();
+    module.exports = factory('b');
   } else {
-    root.sumoRank = factory();
+    root.sumoRank = factory(root.b);
   }
 }(this, function () {
 
