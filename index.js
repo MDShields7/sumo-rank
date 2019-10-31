@@ -4,7 +4,7 @@
   } else if (typeof exports === 'object') {
     module.exports = factory();
   } else {
-    root.sumoRank = factory(root.b);
+    root.sumoRank = factory();
   }
 }(this, function () {
 
@@ -100,7 +100,7 @@
     findRanks();
     replaceRanks();
     testNumberLimits();
-    returnResult();
+    return returnResult();
 
     function errorTest() {
       try {
@@ -274,5 +274,4 @@
       }
     }
   }
-  return String.prototype.sumoRank;
 }));
