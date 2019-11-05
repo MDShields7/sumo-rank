@@ -101,6 +101,23 @@
         };
         const nameList = ['Ms', 'Sd', 'Jd', 'Jk', 'Y', 'O', 'S', 'K', 'M', 'J']; //.sort() only
         const directionList = ['E', 'W']; //.sort() only
+        function stateReset() {
+          formatStrCopy = '';
+          rankStr = undefined;
+          formatStr = undefined;
+          rankArr = undefined;
+          // propArr = undefined;
+          rank.name = null;
+          rank.number = null;
+          rank.direction = null;
+          errorResult = null;
+          numbers = {};
+          rank = {
+            name: null,
+            number: null,
+            direction: null
+          }
+        }
         function errorTest() {
           try {
             inputRank(rankStr)
@@ -397,10 +414,12 @@
         }
 
         this.sort = function (rankArray) {
+          stateReset();
           rankArr = rankArray;
           return checkVersion();
         }
         this.format = function (rank, format) {
+          stateReset();
           rankStr = rank;
           formatStr = format;
           errorTest();
