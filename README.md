@@ -88,11 +88,11 @@ N               -->   Y, M, Jk, etc.<br/>
     "Ozeki ozeki".sumoRank("Nn#Dd)       --> Error<br/>
     "Ozeki Sekiwake".sumoRank("Nn#Dd)    --> Error<br/>
 +   `SR.306`  Rank Name not given, but requested<br/>
-    "2 West".sumoRank("Nn")             --> Error<br/>
+    "2 West".sumoRank("Nn")              --> Error<br/>
 +   `SR.307`  Rank Number not given, but requested<br/>
     "Ozeki West".sumoRank("#")           --> Error<br/>
 +   `SR.308`  Rank Direction not given, but requested<br/>
-    "Ozeki 2".sumoRank("Dd")            --> Error<br/>
+    "Ozeki 2".sumoRank("Dd")             --> Error<br/>
 
 
 ### INPUT ERRORS FOR FORMAT
@@ -108,4 +108,17 @@ N               -->   Y, M, Jk, etc.<br/>
 +   `SR.404`  Duplicate format types throw error<br/>
     "M5W".sumoRank("Dd Dd")              --> Error<br/>
     "M5W".sumoRank("Dd d")               --> Error<br/>
-    "M5W".sumoRank("# #")                --> Error
+    "M5W".sumoRank("# #")                --> Error<br/>
+
+## INPUT ERRORS FOR sumoRank.sort
++   `SR.501`  Empty array, or array with only 1 rank throw error<br/>
+    sumoRank.sort([])                          --> Error<br/>
+    sumoRank.sort([ {id:1,rank:"Y1E"} ])       --> Error<br/>
++   `SR.502`  Array items do not contain 'rank' property<br/>
+    sumoRank.sort([ {id:1}, {id:2} ])          --> Error<br/>
++   `SR.503`  Cannot sort, items do not contain rank number<br/>
+    sumoRank.sort([ {rank:"Y"}, {rank:"Y"} ])  --> Error<br/>
++   `SR.504`  Cannot sort, items do not contain rank direction<br/>
+    sumoRank.sort([ {rank:"Y1"}, {rank:"Y1"} ])  --> Error<br/>
++   `SR.505`  Duplicate rank found<br/>
+    sumoRank.sort([ {rank:"Y1E"}, {rank:"Y1E2"} ])  --> Error<br/>
