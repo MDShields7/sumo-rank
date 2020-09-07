@@ -1,6 +1,6 @@
 require('./index.js');
 
-describe('sumoRank working', () => {
+describe('sumoRank.format() working', () => {
     
   test('sumoRank.format("Y1E", "Nn # Dd") to be "Yokozuna 1 East"', () => {
     expect(sumoRank.format("Y1E", "Nn # Dd")).toBe("Yokozuna 1 East");
@@ -19,8 +19,8 @@ describe('SR.100, SR.200 SERIES ERROR', () => {
   test('SR.101 text (error) - sumoRank.format("Makushita 61 East", "N#D")', () => {
     expect(sumoRank.format("Makushita 61 East", "N#D")).toEqual(expect.stringMatching(/^SR.101/));
   });
-  test('SR.101 text (error) - sumoRank.format("Sandanme 82 East", "N#D")', () => {
-    expect(sumoRank.format("Sandanme 82 East", "N#D")).toEqual(expect.stringMatching(/^SR.101/));
+  test('SR.101 text (error) - sumoRank.format("Sandanme 101 East", "N#D")', () => {
+    expect(sumoRank.format("Sandanme 101 East", "N#D")).toEqual(expect.stringMatching(/^SR.101/));
   });
 
 });
@@ -64,6 +64,17 @@ describe('SR.400 SERIES ERROR', () => {
   });
   test('SR.404 text (error) - sumoRank.format("Y1E", "Dd Dd")', () => {
     expect(sumoRank.format("Y1E", "Dd Dd")).toEqual(expect.stringMatching(/^SR.404/));
+  });
+
+});
+
+describe('sumoRank.sort() working', () => {
+
+  let arr = [ {rank:"J5W"}, {rank:"Y1W"}, {rank:"Y1E"}, {rank:"M6W"}, {rank:"J5E"} ];
+  let arrResult = [ {rank:"Y1E"}, {rank:"Y1W"}, {rank:"M6W"}, {rank:"J5E"}, {rank:"J5W"} ];
+  test('sumoRank.sort( arr ) to be "Yokozuna 1 East"', () => {
+    expect(sumoRank.sort( arr )).toEqual(
+      expect.arrayContaining( arr ), );
   });
 
 });

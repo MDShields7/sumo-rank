@@ -178,13 +178,19 @@
             let rankIndex = rankStr.indexOf(rankLetterTypes[i])
             if (rankIndex !== -1) {
               let type = rankLetterTypes[i];
-              for ( let rankObj in ranks ){
-                let rankItem = ranks[rankObj];
-                if ( type === rankItem['Dd'] || type === rankItem['dd'] || type === rankItem['D'] || type === rankItem['d']){
+              for ( let rankName in ranks ){
+                let rankItem = ranks[rankName];
+                if ( type === rankItem['Dd'] || 
+                  type === rankItem['dd'] ||
+                  type === rankItem['D'] || 
+                  type === rankItem['d']){
                   // console.log('direction is rankItem:', rankItem);
                   rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
                   rankAssignTypes("direction", rankItem);
-                } else if ( type === rankItem['Nn'] || type === rankItem['nn'] || type === rankItem['N'] || type === rankItem['n'] ) {
+                } else if ( type === rankItem['Nn'] ||
+                  type === rankItem['nn'] ||
+                  type === rankItem['N'] ||
+                  type === rankItem['n'] ) {
                   // console.log('name is rankItem:', rankItem);
                   rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
                   rankAssignTypes("name", rankItem);
@@ -278,22 +284,21 @@
           }
         }
         function sortV1() {
-          // return "Data is in version1, but sortV1 not ready"
           return rankArr.sort(function (a, b) {
             var aName = findNameVal(a['rank']);
             var bName = findNameVal(b['rank']);
-            // console.log('aName ('+ aName +') === bName ('+ bName +')', aName === bName)
             if (aName === bName) {
+              // console.log('Found 2 with same name rank:', a, b)
               var aNumber = findNumberVal(a['rank']);
               var bNumber = findNumberVal(b['rank']);
-              // console.log('aNumber ('+ aNumber +') === bNumber ('+ bNumber +')', aNumber === bNumber)
               if (aNumber === bNumber) {
+                // console.log('found 2 with same number rank:', a, b)
                 var aDirection = findDirectionVal(a['rank']);
                 var bDirection = findDirectionVal(b['rank']);
-                // console.log('aDirection ('+ aDirection +') === bDirection ('+ bDirection +')', aDirection === bDirection)
                 if (aDirection === bDirection) {
-                  return aDirection - bDirection;
+                  // Place duplicate rank error here?
                 }
+                return aDirection - bDirection;
               } else {
                 return aNumber - bNumber;
               }
@@ -326,32 +331,38 @@
         function findNameVal(rankStrV1) {
           let foundName = '';
           for (let i = 0; i < nameList.length; i++) {
+            // Checks for a match, match at index i of nameList, returns index of match on input rank to foundName
             foundName = rankStrV1.indexOf(nameList[i]);
-            // console.log(rankStrV1 + ':', nameList[i], 'foundName', foundName)
             if (foundName !== -1) {
-              return getNameVal(nameList[i]);
+              // console.log('For input', rankStrV1 + ':', 'found', nameList[i], 'at index', foundName)
+              // For match at index of nameList, assign a number value, used for sorting
+              let assignedVal = getNameVal(nameList[i]);
+              // console.log('Assigned Value for', nameList[i],'is', assignedVal)
+              return assignedVal;
             }
           }
         }
         function findNumberVal(rankStrV1) {
           for (let j = rankNumberTypes.length - 1; j >= 0; j--) {
-            let rankObj = rankStrV1.match(rankNumberTypes[j]);
-            // console.log(rankStrV1 + ':', rankNumberTypes[j], 'rankObj', rankObj)
-            let rankIndex = -1;
-            if (rankObj !== null) {
-              return rank = rankObj[0];
+            let foundNumber = rankStrV1.match(rankNumberTypes[j]);
+            // Returns an array, foundNumber = [ '1', index: 1, input: 'Y1E', groups: undefined ]
+            if (foundNumber !== null) {
+              let index = foundNumber.index;
+              let assignedVal = rankStrV1.slice(index, index +j);
+              // Rank numbers returned directly for sorting
+              return assignedVal;
             }
           }
         }
         function findDirectionVal(rankStrV1) {
           let foundDirection = '';
           for (let i = 0; i < directionList.length; i++) {
+            // Checks for a match, match at index i of directionList, returns index of match on input rank to foundDirection
             foundDirection = rankStrV1.indexOf(directionList[i]);
-            // console.log(directionList[i], "foundDirection", foundDirection)
             if (foundDirection !== -1 && directionList[i] === 'E') {
-              return 2;
-            } else if (foundDirection !== -1 && directionList[i] === 'W') {
               return 1;
+            } else if (foundDirection !== -1 && directionList[i] === 'W') {
+              return 2;
             }
           }
         }
