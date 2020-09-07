@@ -1,7 +1,6 @@
 require('./index.js');
 
 describe('sumoRank working', () => {
-  console.log('sumoRank working, no errors');
     
   test('sumoRank.format("Y1E", "Nn # Dd") to be "Yokozuna 1 East"', () => {
     expect(sumoRank.format("Y1E", "Nn # Dd")).toBe("Yokozuna 1 East");
@@ -10,7 +9,6 @@ describe('sumoRank working', () => {
 });
 
 describe('SR.100, SR.200 SERIES ERROR', () => {
-  console.log('Rank Errors SR.100');
 
   test('SR.101 text (error) - sumoRank.format("Maegashira 18 East", "N#D")', () => {
     expect(sumoRank.format("Maegashira 18 East", "N#D")).toEqual(expect.stringMatching(/^SR.101/));
@@ -28,7 +26,6 @@ describe('SR.100, SR.200 SERIES ERROR', () => {
 });
 
 describe('SR.300 SERIES ERROR', () => {
-  console.log('Rank Errors SR.300');
 
   test('SR.301 text (error) - sumoRank.format("", "Nn # Dd")', () => {
     expect(sumoRank.format("", "Nn # Dd")).toEqual(expect.stringMatching(/^SR.301/));
@@ -55,7 +52,6 @@ describe('SR.300 SERIES ERROR', () => {
 });
 
 describe('SR.400 SERIES ERROR', () => {
-  console.log('Rank Errors SR.400');
 
   test('SR.401 text (error) - sumoRank.format("Y1E", "")', () => {
     expect(sumoRank.format("Y1E", "")).toEqual(expect.stringMatching(/^SR.401/));

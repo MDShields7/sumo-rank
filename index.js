@@ -1,14 +1,15 @@
 ; (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
+    // console.log('AMD')
     define(factory);
   } else if (typeof exports === 'object') {
+    // console.log('CommonJS system')
     module.exports = factory();
   } else {
     root.sumoRank = factory();
   }
-}(this, function () {
+}( typeof self !== 'undefined' ? self : this, function () {
 
-  (function () {
     class Sumo {
       constructor() {
         const ranks = {
@@ -407,6 +408,4 @@
       }
     }
     return sumoRank = new Sumo();
-  })();
-
 }));
