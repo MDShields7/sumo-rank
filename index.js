@@ -11,77 +11,79 @@
   (function () {
     class Sumo {
       constructor() {
-        const yokozuna = {
-          Nn: "Yokozuna",
-          nn: "yokozuna",
-          N: "Y",
-          n: "y"
-        }
-        const ozeki = {
-          Nn: "Ozeki",
-          nn: "ozeki",
-          N: "O",
-          n: "o"
-        }
-        const sekiwake = {
-          Nn: "Sekiwake",
-          nn: "sekiwake",
-          N: "S",
-          n: "s"
-        }
-        const komusubi = {
-          Nn: "Komusubi",
-          nn: "komusubi",
-          N: "K",
-          n: "k"
-        }
-        const maegashira = {
-          Nn: "Maegashira",
-          nn: "maegashira",
-          N: "M",
-          n: "m"
-        }
-        const juryo = {
-          Nn: "Juryo",
-          nn: "juryo",
-          N: "J",
-          n: "j"
-        }
-        const makushita = {
-          Nn: "Makushita",
-          nn: "makushita",
-          N: "Ms",
-          n: "ms"
-        }
-        const sandanme = {
-          Nn: "Sandanme",
-          nn: "sandanme",
-          N: "Sd",
-          n: "sd"
-        }
-        const jonidan = {
-          Nn: "Jonidan",
-          nn: "jonidan",
-          N: "Jd",
-          n: "jd"
-        }
-        const jonokuchi = {
-          Nn: "Jonokuchi",
-          nn: "jonokuchi",
-          N: "Jk",
-          n: "jk"
-        }
-        const east = {
-          Dd: "East",
-          dd: "east",
-          D: "E",
-          d: "e"
-        }
-        const west = {
-          Dd: "West",
-          dd: "west",
-          D: "W",
-          d: "w"
+        const ranks = {
+          yokozuna : {
+            Nn: "Yokozuna",
+            nn: "yokozuna",
+            N: "Y",
+            n: "y"
+          },
+          ozeki : {
+            Nn: "Ozeki",
+            nn: "ozeki",
+            N: "O",
+            n: "o"
+          },
+          sekiwake : {
+            Nn: "Sekiwake",
+            nn: "sekiwake",
+            N: "S",
+            n: "s"
+          },
+          komusubi : {
+            Nn: "Komusubi",
+            nn: "komusubi",
+            N: "K",
+            n: "k"
+          },
+          maegashira : {
+            Nn: "Maegashira",
+            nn: "maegashira",
+            N: "M",
+            n: "m"
+          },
+          juryo : {
+            Nn: "Juryo",
+            nn: "juryo",
+            N: "J",
+            n: "j"
+          },
+          makushita : {
+            Nn: "Makushita",
+            nn: "makushita",
+            N: "Ms",
+            n: "ms"
+          },
+          sandanme : {
+            Nn: "Sandanme",
+            nn: "sandanme",
+            N: "Sd",
+            n: "sd"
+          },
+          jonidan : {
+            Nn: "Jonidan",
+            nn: "jonidan",
+            N: "Jd",
+            n: "jd"
+          },
+          jonokuchi : {
+            Nn: "Jonokuchi",
+            nn: "jonokuchi",
+            N: "Jk",
+            n: "jk"
+          },
+          east : {
+            Dd: "East",
+            dd: "east",
+            D: "E",
+            d: "e"
+          },
+          west : {
+            Dd: "West",
+            dd: "west",
+            D: "W",
+            d: "w"
+          }
         }
         const rankLetterTypes = ["Yokozuna", "yokozuna", "Ozeki", "ozeki", "Sekiwake", "sekiwake", "Komusubi", "komusubi", "Maegashira", "maegashira", "Juryo", "juryo", "Makushita", "makushita", "Sandanme", "sandanme", "Jonidan", "jonidan", "Jonokuchi", "jonokuchi", "East", "east", "West", "west", "Ms", "ms", "Sd", "sd", "Jd", "jd", "Jk", "jk", "Y", "y", "O", "o", "S", "s", "K", "k", "M", "m", "J", "j", "E", "e", "W", "w"];
         const rankNumberTypes = [null, /[0-9]{1}/, /[0-9]{2}/, /[0-9]{3}/]
@@ -106,7 +108,6 @@
           rankStr = undefined;
           formatStr = undefined;
           rankArr = undefined;
-          // propArr = undefined;
           rank.name = null;
           rank.number = null;
           rank.direction = null;
@@ -176,42 +177,17 @@
             let rankIndex = rankStr.indexOf(rankLetterTypes[i])
             if (rankIndex !== -1) {
               let type = rankLetterTypes[i];
-              if (type === "Yokozuna" || type === "yokozuna" || type === "Y" || type === "y") {
-                rankAssignTypes("name", yokozuna);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Ozeki" || type === "ozeki" || type === "O" || type === "o") {
-                rankAssignTypes("name", ozeki);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Sekiwake" || type === "Sekiwake" || type === "S" || type === "s") {
-                rankAssignTypes("name", sekiwake);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Komusubi" || type === "komusubi" || type === "K" || type === "k") {
-                rankAssignTypes("name", komusubi);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Maegashira" || type === "maegashira" || type === "M" || type === "m") {
-                rankAssignTypes("name", maegashira);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Juryo" || type === "juryo" || type === "J" || type === "j") {
-                rankAssignTypes("name", juryo);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Makushita" || type === "makushita" || type === "Ms" || type === "ms") {
-                rankAssignTypes("name", makushita);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Sandanme" || type === "Sandanme" || type === "Sd" || type === "sd") {
-                rankAssignTypes("name", sandanme);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Jonidan" || type === "jonidan" || type === "Jd" || type === "jd") {
-                rankAssignTypes("name", jonidan);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "Jonokuchi" || type === "jonokuchi" || type === "Jk" || type === "jk") {
-                rankAssignTypes("name", jonokuchi);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "East" || type === "east" || type === "E" || type === "e") {
-                rankAssignTypes("direction", east);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
-              } else if (type === "West" || type === "west" || type === "W" || type === "w") {
-                rankAssignTypes("direction", west);
-                rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+              for ( let rankObj in ranks ){
+                let rankItem = ranks[rankObj];
+                if ( type === rankItem['Dd'] || type === rankItem['dd'] || type === rankItem['D'] || type === rankItem['d']){
+                  // console.log('direction is rankItem:', rankItem);
+                  rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+                  rankAssignTypes("direction", rankItem);
+                } else if ( type === rankItem['Nn'] || type === rankItem['nn'] || type === rankItem['N'] || type === rankItem['n'] ) {
+                  // console.log('name is rankItem:', rankItem);
+                  rankStr = spliceStr(rankStr, rankIndex, rankIndex + rankLetterTypes[i].length)[1];
+                  rankAssignTypes("name", rankItem);
+                }
               }
             }
           }
@@ -272,10 +248,10 @@
         function testNumberLimits() {
           // Makes sure all rank/number combos are valid
           // example: Maegashira cannot go over 17
-          if ((rank.name === maegashira && rank.number > 17
-            || rank.name === juryo && rank.number > 14
-            || rank.name === makushita && rank.number > 60
-            || rank.name === sandanme && rank.number > 100)) {
+          if ((rank.name === ranks.maegashira && rank.number > 17
+            || rank.name === ranks.juryo && rank.number > 14
+            || rank.name === ranks.makushita && rank.number > 60
+            || rank.name === ranks.sandanme && rank.number > 100)) {
             try {
               throw `SR.101 Non-existent Rank Name/Number Error - ${rank.name.Nn} Rank can not have a number of ${rank.number}`
             }
