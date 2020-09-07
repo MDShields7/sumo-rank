@@ -154,6 +154,7 @@
         }
         function rankAssignTypes(rType, rValue) {
           try {
+            // console.log('rank[rType]', rank[rType])
             if (rank[rType] === null) {
               rank[rType] = rValue;
             } else {
@@ -219,34 +220,61 @@
         }
         function replaceRanks() {
           // Loops thru format string an replaces format with desired format/rank type
+          let completed = {
+            name: false,
+            number: false,
+            direction: false
+          }
           for (let k = 0; k < formatStrCopy.length; k++) {
             for (let l = 0; l < formatTypes.length; l++) {
-              let fItem = formatTypes[l];
-              let sliceEnd = k + fItem.length;
+              let formatItem = formatTypes[l];
+              let sliceEnd = k + formatItem.length;
               let slice = formatStrCopy.slice(k, sliceEnd);
-              if (fItem === slice) {
+              if (formatItem === slice) {
                 let rKey;
-                if (l === 0 || l === 1 || l === 2 || l === 3) {
-                  rKey = "name";
-                  if (rank[rKey] === null) {
-                    throw `SR.306 Insufficient Rank Info Error - format string requests 'rank name' type, but rank string does not provide it`
+                try {
+                  if (l === 0 || l === 1 || l === 2 || l === 3) {
+                    rKey = "name";
+                    console.log('name type:', slice, ', completed.name:', completed.name)
+                    if (rank[rKey] === null) {
+                      throw `SR.306 Insufficient Rank Info Error - format string requests 'rank name' type, but rank string does not provide it`
+                    } else if ( completed.name === false ){
+                      formatStrCopy = formatStrCopy.replace(formatItem, rank[rKey][formatItem])
+                      k += rank[rKey][formatItem].length;
+                      completed.name = true;
+                    } else if ( completed.name === true ){
+                      throw `SR.406 Duplicate Format Error - format string requests 'rank name' type, ${formatItem}, multiple times`
+                    }
+                  } else if (l === 4 || l === 5 || l === 6 || l === 7) {
+                    console.log('direction type:', slice, ', completed.direction:', completed.direction)
+                    rKey = "direction";
+                    if (rank[rKey] === null) {
+                      throw `SR.308 Insufficient Rank Info Error - format string requests 'rank direction' type, but rank string does not provide it`
+                    } else if ( completed.direction === false ){
+                      formatStrCopy = formatStrCopy.replace(formatItem, rank[rKey][formatItem])
+                      k += rank[rKey][formatItem].length;
+                      completed.direction = true;
+                      console.log('completed.direction', completed.direction)
+                    } else if ( completed.direction === true ){
+                      throw `SR.408 Duplicate Format Error - format string requests 'rank direction' type, ${formatItem}, multiple times`
+                    }
+                  } else if (l === 8) {
+                    console.log('number type:', slice, ', completed.number:', completed.number)
+                    rKey = "number";
+                    if (rank[rKey] === null) {
+                      throw `SR.307 Insufficient Rank Info Error - format string requests 'rank number' type, but rank string does not provide it`
+                    } else if ( completed.number === false ){
+                      formatStrCopy = formatStrCopy.replace(formatItem, rank[rKey])
+                      k += rank[rKey].toString().length - 1;
+                      completed.number = true;
+                      // console.log('completed.number', completed.number)
+                    } else if ( completed.number === true ){
+                      throw `SR.407 Duplicate Format Error - format string requests 'rank direction' type, ${formatItem}, multiple times`
+                    }
                   }
-                  formatStrCopy = formatStrCopy.replace(fItem, rank[rKey][fItem])
-                  k += rank[rKey][fItem].length;
-                } else if (l === 4 || l === 5 || l === 6 || l === 7) {
-                  rKey = "direction";
-                  if (rank[rKey] === null) {
-                    throw `SR.308 Insufficient Rank Info Error - format string requests 'rank direction' type, but rank string does not provide it`
-                  }
-                  formatStrCopy = formatStrCopy.replace(fItem, rank[rKey][fItem])
-                  k += rank[rKey][fItem].length;
-                } else if (l === 8) {
-                  rKey = "number";
-                  if (rank[rKey] === null) {
-                    throw `SR.307 Insufficient Rank Info Error - format string requests 'rank number' type, but rank string does not provide it`
-                  }
-                  formatStrCopy = formatStrCopy.replace(fItem, rank[rKey])
-                  k += rank[rKey].toString().length - 1;
+                }
+                catch (error){
+                  errorResult = error;
                 }
               }
             }

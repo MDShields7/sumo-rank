@@ -77,7 +77,7 @@ N               -->   Y, M, Jk, etc.<br/>
     "".sumoRank("Dd")                    --> Error<br/>
 +   `SR.302`  Blank rank types throw error<br/>
     "     ".sumoRank("Nn#Dd")            --> Error<br/>
-+   `SR.303`  (ERROR DOES NOT EXIST)<br/>
++   `SR.303`  (Placeholder Error)<br/>
 +   `SR.304`  Non-rank item throw error<br/>
     "M two east".sumoRank("N#D")         --> Error<br/>
     "i like turtles".sumoRank("N#D")     --> Error<br/>
@@ -105,10 +105,14 @@ N               -->   Y, M, Jk, etc.<br/>
     "Y1E".sumoRank(true)                 --> Error<br/>
     "Y1E".sumoRank([])                   --> Error<br/>
     "Y1E".sumoRank({})                   --> Error<br/>
-+   `SR.404`  Duplicate format types throw error<br/>
-    "M5W".sumoRank("Dd Dd")              --> Error<br/>
-    "M5W".sumoRank("Dd d")               --> Error<br/>
++   `SR.404`  (Placeholder Error)<br/>
++   `SR.405`  (Placeholder Error)<br/>
++   `SR.406`  Duplicate rank format type<br/>
+    "M5W".sumoRank("N n")                --> Error<br/>
++   `SR.407`  Duplicate number format type<br/>
     "M5W".sumoRank("# #")                --> Error<br/>
++   `SR.406`  Duplicate direction format type<br/>
+    "M5W".sumoRank("Dd dd")              --> Error<br/>
 
 ## INPUT ERRORS FOR sumoRank.sort
 +   `SR.501`  Empty array, or array with only 1 rank throw error<br/>
