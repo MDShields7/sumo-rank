@@ -1,5 +1,5 @@
 # Documentation - How to use sumoRank
-"\<RANK>".sumoRank("\<DESIRED FORMAT>")
+sumoRank.format("\<RANK>", "\<DESIRED FORMAT>")
 
 ## Contents 
 
@@ -52,67 +52,67 @@ N               -->   Y, M, Jk, etc.<br/>
 ### FORMAT INPUT RULES
 "\<RANK>".sumoRank("**\<DESIRED FORMAT>**")
 1.  Format can be arranged in any combination<br/>
-    "S1W".sumoRank("Nn")                 --> "Sekiwake"<br/>
-    "S1W".sumoRank("N#d")                --> "S1w"<br/>
+    "S1W".sumoRank.format("Nn")                 --> "Sekiwake"<br/>
+    "S1W".sumoRank.format("N#d")                --> "S1w"<br/>
 2.  Spaces between rankings will be retained<br/>
-    "S1W".sumoRank("nn # dd")            --> "sekiwake 1 west"<br/>
+    "S1W".sumoRank.format("nn # dd")            --> "sekiwake 1 west"<br/>
 
 ### RANK INPUT RULES
 "**\<RANK>**".sumoRank("\<DESIRED FORMAT>")
 1.  Input rank can be any arrangement<br/>
-    "Komusubi 1 e".sumoRank("N#D")       --> "K1E"<br/>
-    "e 1 Komusubi".sumoRank("N#D")       --> "K1E"<br/>
-    "K1e".sumoRank("N#D")                --> "K1E"<br/>
+    sumoRank.format("Komusubi 1 e","N#D")       --> "K1E"<br/>
+    sumoRank.format("e 1 Komusubi","N#D")       --> "K1E"<br/>
+    sumoRank.format("K1e","N#D")                --> "K1E"<br/>
 2.  Input rank IS caps sensitive<br/>
-    "KomuSUBi 1 eASt".sumoRank("Nn")     --> Error SR.304 
+    sumoRank.format("KomuSUBi 1 eASt","Nn")     --> Error SR.304 
 
 ### CONTENT ERRORS
 +   `SR.101`  Non-existent Name/Number rankings throw error<br/>
-    "Maegashira 18 East".sumoRank("N#D") --> Error<br/>
+    "Maegashira 18 East".sumoRank.format("N#D") --> Error<br/>
 +   `SR.202`  (INCOMPLETE) Lower division rankings throw error<br/>
-    "Sandanme 82 East".sumoRank("N#D")   --> Error
+    "Sandanme 82 East".sumoRank.format("N#D")   --> Error
 
 ### INPUT ERRORS FOR RANK
 +   `SR.301`  Empty rank types throw error<br/>
-    "".sumoRank("Dd")                    --> Error<br/>
+    "".sumoRank.format("Dd")                    --> Error<br/>
 +   `SR.302`  Blank rank types throw error<br/>
-    "     ".sumoRank("Nn#Dd")            --> Error<br/>
+    "     ".sumoRank.format("Nn#Dd")            --> Error<br/>
 +   `SR.303`  (Placeholder Error)<br/>
 +   `SR.304`  Non-rank item throw error<br/>
-    "M two east".sumoRank("N#D")         --> Error<br/>
-    "i like turtles".sumoRank("N#D")     --> Error<br/>
+    "M two east".sumoRank.format("N#D")         --> Error<br/>
+    "i like turtles".sumoRank.format("N#D")     --> Error<br/>
 +   `SR.305`  Multiple instances of rank type throw error<br/>
-    "Y Y".sumoRank("Nn#Dd)               --> Error<br/>
-    "Y y".sumoRank("Nn#Dd)               --> Error<br/>
-    "Y M".sumoRank("Nn#Dd)               --> Error<br/>
-    "Ozeki ozeki".sumoRank("Nn#Dd)       --> Error<br/>
-    "Ozeki Sekiwake".sumoRank("Nn#Dd)    --> Error<br/>
+    "Y Y".sumoRank.format("Nn#Dd)               --> Error<br/>
+    "Y y".sumoRank.format("Nn#Dd)               --> Error<br/>
+    "Y M".sumoRank.format("Nn#Dd)               --> Error<br/>
+    "Ozeki ozeki".sumoRank.format("Nn#Dd)       --> Error<br/>
+    "Ozeki Sekiwake".sumoRank.format("Nn#Dd)    --> Error<br/>
 +   `SR.306`  Rank Name not given, but requested<br/>
-    "2 West".sumoRank("Nn")              --> Error<br/>
+    "2 West".sumoRank.format("Nn")              --> Error<br/>
 +   `SR.307`  Rank Number not given, but requested<br/>
-    "Ozeki West".sumoRank("#")           --> Error<br/>
+    "Ozeki West".sumoRank.format("#")           --> Error<br/>
 +   `SR.308`  Rank Direction not given, but requested<br/>
-    "Ozeki 2".sumoRank("Dd")             --> Error<br/>
+    "Ozeki 2".sumoRank.format("Dd")             --> Error<br/>
 
 
 ### INPUT ERRORS FOR FORMAT
 +   `SR.401`  Empty format types throw error<br/>
-    "K2E".sumoRank("")                   --> Error<br/>
+    "K2E".sumoRank.format("")                   --> Error<br/>
 +   `SR.402`  Blank format types throw error<br/>
-    "K2E".sumoRank("    ")               --> Error<br/>
+    "K2E".sumoRank.format("    ")               --> Error<br/>
 +   `SR.403`  Incorrect format types throw error<br/>
-    "Y1E".sumoRank(123)                  --> Error<br/>
-    "Y1E".sumoRank(true)                 --> Error<br/>
-    "Y1E".sumoRank([])                   --> Error<br/>
-    "Y1E".sumoRank({})                   --> Error<br/>
+    "Y1E".sumoRank.format(123)                  --> Error<br/>
+    "Y1E".sumoRank.format(true)                 --> Error<br/>
+    "Y1E".sumoRank.format([])                   --> Error<br/>
+    "Y1E".sumoRank.format({})                   --> Error<br/>
 +   `SR.404`  (Placeholder Error)<br/>
 +   `SR.405`  (Placeholder Error)<br/>
 +   `SR.406`  Duplicate rank format type<br/>
-    "M5W".sumoRank("N n")                --> Error<br/>
+    "M5W".sumoRank.format("N n")                --> Error<br/>
 +   `SR.407`  Duplicate number format type<br/>
-    "M5W".sumoRank("# #")                --> Error<br/>
-+   `SR.406`  Duplicate direction format type<br/>
-    "M5W".sumoRank("Dd dd")              --> Error<br/>
+    "M5W".sumoRank.format("# #")                --> Error<br/>
++   `SR.408`  Duplicate direction format type<br/>
+    "M5W".sumoRank.format("Dd dd")              --> Error<br/>
 
 ## INPUT ERRORS FOR sumoRank.sort
 +   `SR.501`  Empty array, or array with only 1 rank throw error<br/>
