@@ -115,13 +115,15 @@ N       -->   Y, M, Jk, etc.<br/>
 +   `SR.408`  Duplicate direction format type<br/>
     sumoRank.format("M5W", "Dd dd")              --> Error<br/>
 
-### sumoRank.format()
+### sumoRank.sort()
 
 #### FORMAT INPUT RULES
-.sumoRank("**\<RANK>**", "**\<DESIRED FORMAT>**")
+sumoRank.sort("**\<RANK>**", "**\<DESIRED FORMAT>**")
 1.  Format must be an array of objects with 'rank' property<br/>
 1.  The 'rank' property must be in the 'N#D' format<br/>
-    [   {rank:"Y1E"}, {rank:"M12W"} ]
+    [ {rank:"Y1E"}, {rank:"M12W"} ]
+    sumoRank.format([ {rank:"Sd1W"}, {rank:"M2E"} ]) --> [ {rank:"M2E"}, {rank:"Sd1W"} ]<br/>
+    sumoRank.format([ {rank:"K1E"}, {rank:"O1W"} ]) --> [ {rank:"O1E"}, {rank:"K1E"} ]<br/>
 
 #### INPUT ERRORS
 +   `SR.501`  Empty array, or array with only 1 rank throw error<br/>
@@ -134,4 +136,4 @@ N       -->   Y, M, Jk, etc.<br/>
 +   `SR.504`  Cannot sort, items do not contain rank direction<br/>
     sumoRank.sort([ {rank:"Y1"}, {rank:"Y1"} ]) --> Error<br/>
 +   `SR.505`  Duplicate rank found<br/>
-    sumoRank.sort([ {rank:"Y1E"}, {rank:"Y1E2"} ])  --> Error<br/>
+    sumoRank.sort([ {rank:"Y1E"}, {rank:"Y1E"} ]) --> Error<br/>
