@@ -8,10 +8,6 @@ describe('sumoRank.format() working', () => {
 
 });
 
-test('SR.301 WHICH ONE?  text (error) - sumoRank.format("", "")', () => {
-  expect(sumoRank.format("", "")).toEqual(expect.stringMatching(/^SR.301/));
-});
-
 describe('Format SR.100, SR.200 ERROR:', () => {
 
   test('SR.101 text (error) - sumoRank.format("Maegashira 18 East", "N#D")', () => {
