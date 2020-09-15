@@ -23,6 +23,8 @@ Example 2: The lowest possible rank in the top division<br/>
 Long, all caps version: "Maegashira 17 West"<br/>
 Short, partial caps version: "M17w"
 
+[SUmo Rankings Pyramid](https://github.com/MDShields7/sumo-rank/blob/master/img/sumo-rank-pyramid.jpg)
+
 ### RANK INPUT
 
 Named ranks (high to low)    -->   Yokozuna, Ozeki, Sekiwake, Komusubi, Maegashira, Juryo, Makushita, Sandanme, Jonidan, Jonokuchi<br/>
@@ -49,10 +51,9 @@ N       -->   Y, M, Jk, etc.<br/>
 
 ## USE GUIDE
 
-### sumoRank.format()
+### sumoRank.format("**\<RANK>**", "**\<DESIRED FORMAT>**")
 
 #### FORMAT INPUT RULES
-.sumoRank("**\<RANK>**", "**\<DESIRED FORMAT>**")
 1.  Format can be arranged in any combination<br/>
     sumoRank.format("S1W", "Nn")                 --> "Sekiwake"<br/>
     sumoRank.format("S1W", "N#d")                --> "S1w"<br/>
@@ -60,7 +61,6 @@ N       -->   Y, M, Jk, etc.<br/>
     sumoRank.format("S1W", "nn # dd")            --> "sekiwake 1 west"<br/>
 
 #### RANK INPUT RULES
-"**\<RANK>**".sumoRank("\<DESIRED FORMAT>")
 1.  Input rank can be any arrangement<br/>
     sumoRank.format("Komusubi 1 e", "N#D")       --> "K1E"<br/>
     sumoRank.format("e 1 Komusubi", "N#D")       --> "K1E"<br/>
@@ -115,15 +115,14 @@ N       -->   Y, M, Jk, etc.<br/>
 +   `SR.408`  Duplicate direction format type<br/>
     sumoRank.format("M5W", "Dd dd")              --> Error<br/>
 
-### sumoRank.sort()
+### sumoRank.sort( [ {<RANK OBJ>}, {<RANK OBJ>}, {<RANK OBJ.>}, etc ] )
 
 #### FORMAT INPUT RULES
-sumoRank.sort("**\<RANK>**", "**\<DESIRED FORMAT>**")
 1.  Format must be an array of objects with 'rank' property<br/>
 1.  The 'rank' property must be in the 'N#D' format<br/>
-    [ {rank:"Y1E"}, {rank:"M12W"} ]
-    sumoRank.format([ {rank:"Sd1W"}, {rank:"M2E"} ]) --> [ {rank:"M2E"}, {rank:"Sd1W"} ]<br/>
-    sumoRank.format([ {rank:"K1E"}, {rank:"O1W"} ]) --> [ {rank:"O1E"}, {rank:"K1E"} ]<br/>
+    [ {rank:"Y1E"}, {rank:"M12W"} ]<br/>
+    sumoRank.format([ {rank:"Sd1W"}, {rank:"M2E"} ])<br/> --> [ {rank:"M2E"}, {rank:"Sd1W"} ]<br/>
+    sumoRank.format([ {rank:"K1E"}, {rank:"O1W"} ])<br/> --> [ {rank:"O1E"}, {rank:"K1E"} ]<br/>
 
 #### INPUT ERRORS
 +   `SR.501`  Empty array, or array with only 1 rank throw error<br/>
