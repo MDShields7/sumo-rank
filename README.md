@@ -23,7 +23,7 @@ Example 2: The lowest possible rank in the top division<br/>
 Long, all caps version: "Maegashira 17 West"<br/>
 Short, partial caps version: "M17w"
 
-[Sumo Rankings Pyramid](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-rank-pyramid.jpg 'Sumo Rankings Pyramid')
+![Sumo Rankings Pyramid](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-rank-pyramid.jpg 'Sumo Rankings Pyramid')<br>
 
 ### RANK INPUT
 
