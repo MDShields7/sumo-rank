@@ -1,7 +1,6 @@
-# Documentation - How to use sumoRank
-
 ![Sumo Rank Banner](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-colorblock-sumoRank.png 'sumoRank banner image')<br>
 
+# Documentation - How to use sumoRank
 ## Contents 
 
 [Quick Brief on Sumo Ranks](#user-content-quick-brief-on-sumo-ranks)<br/>
