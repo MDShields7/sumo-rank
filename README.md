@@ -1,5 +1,6 @@
 # Documentation - How to use sumoRank
-sumoRank.format("\<RANK>", "\<DESIRED FORMAT>")
+
+![Sumo Rank Banner](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-colorblock-sumoRank.png 'sumoRank banner image')<br>
 
 ## Contents 
 
