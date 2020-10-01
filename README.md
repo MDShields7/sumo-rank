@@ -22,9 +22,9 @@ Long, all caps version: "Yokozuna 1 East"<br/>
 Short, partial caps version: "Y1e"<br/>
 Example 2: The lowest possible rank in the top division<br/>
 Long, all caps version: "Maegashira 17 West"<br/>
-Short, partial caps version: "M17w"
+Short, partial caps version: "M17w"<br/>
 
-![Sumo Rankings Pyramid](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-rank-pyramid-V2.png 'Sumo Rankings Pyramid')<br>
+![Sumo Rankings Pyramid](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-rank-pyramid-V2.jpg 'Sumo Rankings Pyramid')<br>
 
 ### RANK INPUT
 
