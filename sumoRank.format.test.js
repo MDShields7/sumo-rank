@@ -136,20 +136,50 @@ describe('Format SR.400 ERROR', () => {
   test('SR.401 text (error) - sumoRank.format("Y1E", "")', () => {
     expect(sumoRank.format("Y1E", "")).toEqual(expect.stringMatching(/^SR.401/));
   });
+  test('SR.401 text (error) - sumoRank.format("maegashira east", "")', () => {
+    expect(sumoRank.format("maegashira east", "")).toEqual(expect.stringMatching(/^SR.401/));
+  });
   test('SR.402 text (error) - sumoRank.format("Y1E", " ")', () => {
     expect(sumoRank.format("Y1E", " ")).toEqual(expect.stringMatching(/^SR.402/));
+  });
+  test('SR.402 text (error) - sumoRank.format("Jk20e", "  ")', () => {
+    expect(sumoRank.format("Jk20e", "  ")).toEqual(expect.stringMatching(/^SR.402/));
   });
   test('SR.403 text (error) - sumoRank.format("Y1E", 123)', () => {
     expect(sumoRank.format("Y1E", 123)).toEqual(expect.stringMatching(/^SR.403/));
   });
+  test('SR.403 text (error) - sumoRank.format("Y1E", 123)', () => {
+    expect(sumoRank.format("Y1E", [])).toEqual(expect.stringMatching(/^SR.403/));
+  });
+  test('SR.403 text (error) - sumoRank.format("Y1E", 123)', () => {
+    expect(sumoRank.format("Y1E", false)).toEqual(expect.stringMatching(/^SR.403/));
+  });
+  test('SR.403 text (error) - sumoRank.format("Y1E", 123)', () => {
+    expect(sumoRank.format("Y1E", {})).toEqual(expect.stringMatching(/^SR.403/));
+  });
+  test('SR.403 text (error) - sumoRank.format("Y1E", 123)', () => {
+    expect(sumoRank.format("Y1E", null)).toEqual(expect.stringMatching(/^SR.403/));
+  });
   test('SR.406 text (error) - sumoRank.format("Y1E", "Nn Nn")', () => {
     expect(sumoRank.format("Y1E", "Nn Nn")).toEqual(expect.stringMatching(/^SR.406/));
+  });
+  test('SR.406 text (error) - sumoRank.format("Y1E", "Nn nn")', () => {
+    expect(sumoRank.format("Y1E", "Nn nn")).toEqual(expect.stringMatching(/^SR.406/));
+  });
+  test('SR.406 text (error) - sumoRank.format("Y1E", "N nn Nn n # D")', () => {
+    expect(sumoRank.format("Y1E", "N nn Nn n # D")).toEqual(expect.stringMatching(/^SR.406/));
   });
   test('SR.407 text (error) - sumoRank.format("Y1E", "# #")', () => {
     expect(sumoRank.format("Y1E", "# #")).toEqual(expect.stringMatching(/^SR.407/));
   });
+  test('SR.407 text (error) - sumoRank.format("Y1E", "# # # # # Dd")', () => {
+    expect(sumoRank.format("Y1E", "# # # # # Dd")).toEqual(expect.stringMatching(/^SR.407/));
+  });
   test('SR.408 text (error) - sumoRank.format("Y1E", "Dd Dd")', () => {
     expect(sumoRank.format("Y1E", "Dd Dd")).toEqual(expect.stringMatching(/^SR.408/));
+  });
+  test('SR.408 text (error) - sumoRank.format("Y1E", "Dd # dd")', () => {
+    expect(sumoRank.format("Y1E", "Dd # dd")).toEqual(expect.stringMatching(/^SR.408/));
   });
 
 });
