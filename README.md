@@ -27,28 +27,52 @@ Short, partial caps version: "M17w"<br/>
 ![Sumo Rankings Pyramid](https://mdshields7.github.io/portfolio/img/portfolio/thumbnails/sumo-rank-pyramid-V2.jpg 'Sumo Rankings Pyramid')<br>
 
 ### RANK INPUT
+Named ranks (high to low):<br>
+Yokozuna, Ozeki, Sekiwake, Komusubi, Maegashira, Juryo, Makushita, Sandanme, Jonidan, Jonokuchi<br/>
+Number ranks (high to low):<br>
+1 - 100+ (100 is a typical maximum, but it is unlimited in some cases)<br/>
+Direction ranks (high to low):<br>
+East, West
 
-Named ranks (high to low)    -->   Yokozuna, Ozeki, Sekiwake, Komusubi, Maegashira, Juryo, Makushita, Sandanme, Jonidan, Jonokuchi<br/>
-Number ranks (high to low)   -->   1 - 100+ (100 is a typical maximum, but it is unlimited in some cases)<br/>
-Direction ranks (high to low) -->   East, West
 ### FORMAT INPUT
-Nn      -->   Yokozuna, Maegashira, Jonokuchi, etc.<br/>
-nn      -->   yokozuna, maegashira, Jonokuchi, etc.<br/>
-N       -->   Y, M, Jk, etc.<br/>
-n       -->   y, m, jk, etc.<br/>
-Dd      -->   East, West<br/>
-dd      -->   east, west<br/>
-D       -->   E, W<br/>
-d       -->   e, w<br/>
-\#      -->   1, 15, 68, 104, etc.
+| Nn         | nn         | N  | n  |
+|:-----------|:-----------|:---|:---|
+| Yokozuna   | yokozuna   | Y  | y  |
+| Ozeki      | ozeki      | O  | o  |
+| Sekiwake   | sekiwake   | S  | s  |
+| Komusubi   | komusubi   | K  | k  |
+| Maegashira | maegashira | M  | m  |
+| Juryo      | juryo      | J  | j  |
+| Makushita  | makushita  | Ms | ms |
+| Sandanme   | sandanme   | Sd | sd |
+| Jonidan    | jonidan    | Jd | jd |
+| Jonkuchi   | jonokuchi  | Jk | jk |
+
+| Rank Number Ranges | #             |
+|:-------------------|:--------------|
+| Yokozuna           | 1 - 2         |
+| Ozeki              | 1 - 2         |
+| Sekiwake           | 1 - 2         |
+| Komusubi           | 1 - 2         |
+| Maegashira         | 1 - 17(limit) |
+| Juryo              | 1 - 14(limit) |
+| Makushita          | 1 - 60(limit) |
+| Sandanme           | 1 - 100(limit)|
+| Jonidan            | 1 - 100+      |
+| Jonkuchi           | 1 - 60+       |
+
+| Dd   | dd   | D | d |
+|:-----|:-----|:--|:--|
+| East | east | E | e |
+| West | west | W | w |
 
 ### COMMON USAGE EXAMPLES 
-Nn # Dd -->   Yokozuna 1 East, Maegashira 12 West, Jonokuchi 68 East, etc.<br/>
-nn # dd -->   yokozuna 1 east, maegashira 12 west, jonokuchi 68 east, etc.<br/>
-N#D     -->   Y1E, M12W, Jk68E, etc.<br/>
-N#d     -->   Y1e, M12w, Jk68e, etc.<br/>
-N       -->   Y, M, Jk, etc.<br/>
-\#d     -->   1e, 12w, 68e, etc.
+Nn # Dd -->   Yokozuna 1 East, Maegashira 12 West, Jonokuchi 68 East<br/>
+nn # dd -->   yokozuna 1 east, maegashira 12 west, jonokuchi 68 east<br/>
+N#D     -->   Y1E, M12W, Jk68E<br/>
+N#d     -->   Y1e, M12w, Jk68e<br/>
+N       -->   Y, M, Jk<br/>
+\#d     -->   1e, 12w, 68e
 
 ## USE GUIDE
 
