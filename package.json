@@ -3,12 +3,29 @@
   "version": "1.0.5",
   "description": "String method that re-formats Japanese sumo wrestler ranks",
   "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
   "author": "Matthew Shields",
   "license": "ISC",
-  "dependencies": {
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage",
+    "coverageReporters": [
+        "lcov",
+        "text"
+    ],
+    "collectCoverageFrom": [
+        "**/*.{js,jsx}",
+        "!**/node_modules/**",
+        "!**/coverage/**",
+        "!**/vendor/**"
+    ]
+},
+  "scripts": {
+      "test": "NODE_ENV=test jest --coverage && cat coverage/lcov.info | coveralls --verbose"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "coveralls": "^3.1.0",
     "jest": "^24.9.0"
   }
 }
